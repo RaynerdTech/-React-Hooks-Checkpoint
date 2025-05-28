@@ -1,0 +1,56 @@
+/* AnimatedBackground.css */
+
+.stars, .twinkling, .aurora-glow {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stars {
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 120s linear infinite;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+.twinkling {
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0) 70%);
+  animation: twinkle 6s ease-in-out infinite alternate;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+.aurora-glow {
+  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.4), transparent),
+              radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.3), transparent);
+  animation: auroraPulse 20s ease-in-out infinite alternate;
+  filter: blur(80px);
+  mix-blend-mode: overlay;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes auroraPulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(15deg);
+  }
+}
