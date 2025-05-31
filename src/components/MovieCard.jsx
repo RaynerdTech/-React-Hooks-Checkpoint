@@ -1,8 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    // Encode title to make it URL-safe
+    navigate(`/movie/${encodeURIComponent(movie.title)}`);
+  };
+
   return (
-    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl p-6 transform hover:scale-105 hover:rotate-1 transition-all duration-500 ease-in-out backdrop-blur-sm bg-opacity-70 border border-gray-700">
+    <div
+      onClick={handleClick}
+      className="cursor-pointer bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl p-6 transform hover:scale-105 hover:rotate-1 transition-all duration-500 ease-in-out backdrop-blur-sm bg-opacity-70 border border-gray-700"
+    >
       <div className="overflow-hidden rounded-2xl mb-4 shadow-lg">
         <img
           src={movie.posterURL}
